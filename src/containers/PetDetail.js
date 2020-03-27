@@ -12,7 +12,7 @@ function PetDetail(props) {
 	const {petDetail, petDetailAction, loading} = props;
 	const {id} = props.match.params;
 
-	const {name, type, temperament, conditions,imageURL} = petDetail;
+	const {name, type, temperament, conditions,imageURL, id:petID} = petDetail;
 
 	useEffect(() => {
 		!petDetail.id && petDetailAction(id);
@@ -28,6 +28,7 @@ function PetDetail(props) {
 
 
 			<h3>{name}</h3>
+			<p>ID: {petID}</p>
 			<p>Type: {type}</p>
 			<p>Temperament: {temperament}</p>
 			<p>Condition: {conditions}</p>
