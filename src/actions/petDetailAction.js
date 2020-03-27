@@ -15,7 +15,6 @@ export const petDetailAction = (id) => {
 					}
 				});
 			}).catch(error => {
-				debugger
 				reject(error);
 			});
 		});
