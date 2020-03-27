@@ -9,15 +9,18 @@ import {petsAction} from '../actions/petsAction';
 
 function App(props) {
 	const {pets, petsAction, loading} = props;
-	debugger
 
 	useEffect(() => {
 		!pets.length && petsAction();
 	});
 
-	const petsDisplay = pets.map(({id, name, imageURL}, index) => {
+	const petsDisplay = pets.map(({id, internalID, name, imageURL, age, weight}, index) => {
+
+		const riskStyle = +weight > 15 || age > 10? 'riskHigh' : '';
+
         return (
-            <div key={`pet-item-${index}`} className='pet-item' data-id={id}>
+            <div key={`pet-item-${index}`} className={`pet-item ${riskStyle}`} data-id={id}>
+				<div className='pet-item-content'>{internalID}</div>
 				<div className='pet-item-content'>{name}</div>
 			</div>
         );
@@ -34,6 +37,10 @@ function App(props) {
 			</header>
             <main>
 				<h2>Available Pets:</h2>
+				<div className="riskContainer">
+					<div className="riskIndicator riskHigh"></div>
+					Denotes pet is at risk due to age or weight
+				</div>
                 <div className="pets" onClick={(e) => {
 					const {id} = e.nativeEvent.target.dataset;
 					const {history} = props;

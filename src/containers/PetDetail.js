@@ -11,11 +11,10 @@ import {petDetailAction} from '../actions/petDetailAction';
 function PetDetail(props) {
 	const {petDetail, petDetailAction, loading} = props;
 	const {id} = props.match.params;
-
-	const {name, type, temperament, conditions,imageURL, id:petID} = petDetail;
+	const {internalID, name, id:petID, weight, age} = petDetail;
 
 	useEffect(() => {
-		!petDetail.id && petDetailAction(id);
+		id !== petID && petDetailAction(id);
 	});
 
 	const petDisplay = petDetail.id && (
@@ -28,10 +27,9 @@ function PetDetail(props) {
 
 
 			<h3>{name}</h3>
-			<p>ID: {petID}</p>
-			<p>Type: {type}</p>
-			<p>Temperament: {temperament}</p>
-			<p>Condition: {conditions}</p>
+			<p>ID: {internalID}</p>
+			<p>Weight: {weight}</p>
+			<p>Age: {age}</p>
 
 			<img src={logo} alt={`"${name}"`}/>
 		</div>
