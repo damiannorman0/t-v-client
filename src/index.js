@@ -1,14 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+
+import { Provider } from 'react-redux';
+import configureStore from './store';
+
+import './styles/index.css';
+import App from './containers/App';
+import PetDetail from './containers/PetDetail';
+
 import * as serviceWorker from './serviceWorker';
 
+import { createBrowserHistory } from "history";
+import { Router, Route } from 'react-router-dom'
+
+const history = createBrowserHistory();
+
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <Provider store={configureStore()}>
+        <Router history={history}>
+            <Route exact path="/" component={App} />
+            <Route path="/petDetail/:id" component={PetDetail} />
+        </Router>
+    </Provider>,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
