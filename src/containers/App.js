@@ -6,6 +6,9 @@ import React, {useEffect, useState} from 'react';
 
 import {petsAction} from '../actions/petsAction';
 import {filterPetsByName, filterPetsByStatus, isRisk} from '../utils/filter';
+import {Filters} from "../components/filters";
+import {PetItem} from "../components/petItem";
+
 
 function App(props) {
 	const {pets, petsAction, loading} = props;
@@ -18,13 +21,9 @@ function App(props) {
 
 	const filteredName = nameFilter.length > 1 ? filterPetsByName(nameFilter, pets) : pets;
 	const filterStatus = statusFilter ? filterPetsByStatus(statusFilter, filteredName) : filteredName;
-	const petsDisplay = filterStatus.map(({id, internalID, name, imageURL, age, weight}, index) => {
-		const riskStyle = isRisk({age, weight})? 'riskHigh' : '';
+	const petsDisplay = filterStatus.map((item, index) => {
         return (
-            <div key={`pet-item-${index}`} className={`pet-item ${riskStyle}`} data-id={id}>
-				<div className='pet-item-content'>{internalID}</div>
-				<div className='pet-item-content'>{name}</div>
-			</div>
+			<PetItem {...item} index={index}/>
         );
     });
 
@@ -39,24 +38,7 @@ function App(props) {
 			</header>
             <main>
 				<h2>Available Pets:</h2>
-				<div className="filters">
-					<input type='text' placeholder="Filter by name" onChange={({nativeEvent = {}} = {}) => {
-						const {target:{
-							value
-						}} = nativeEvent;
-
-						setNameFilter(value);
-					}}/>
-					<label for='riskCB'>Filter by risk</label>
-					<input id='riskCB' type='checkbox' placeholder="Filter by name" onChange={({nativeEvent = {}} = {}) => {
-						const {target:{
-							checked
-						}} = nativeEvent;
-
-						setStatusFilter(checked);
-					}}>
-					</input>
-				</div>
+				<Filters setNameFilter={setNameFilter} setStatusFilter={setStatusFilter} />
 				<div className="riskContainer">
 					<div className="riskIndicator riskHigh"></div>
 					Denotes pet is at risk due to age or weight
