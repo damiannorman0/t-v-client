@@ -24,7 +24,7 @@ function App(props) {
 		return weight > 15 || age > 10;
 	};
 
-	const filteredName = nameFilter.length > 0 ? pets.filter(filterPetsByName) : pets;
+	const filteredName = nameFilter.length > 1 ? pets.filter(filterPetsByName) : pets;
 	const filterStatus = statusFilter ? filteredName.filter(filterPetsByStatus) : filteredName;
 	const petsDisplay = filterStatus.map(({id, internalID, name, imageURL, age, weight}, index) => {
 		const riskStyle = +weight > 15 || age > 10? 'riskHigh' : '';
