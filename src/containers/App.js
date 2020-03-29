@@ -4,8 +4,8 @@ import logo from '../logo.svg';
 import '../styles/App.css';
 import React, {useEffect, useState} from 'react';
 
-
 import {petsAction} from '../actions/petsAction';
+import {filterPetsByName, filterPetsByStatus, isRisk} from '../utils/filter';
 
 function App(props) {
 	const {pets, petsAction, loading} = props;
@@ -16,18 +16,10 @@ function App(props) {
 		!pets.length && petsAction();
 	});
 
-	const regex = new RegExp('^' + nameFilter, 'i');
-	const filterPetsByName = ({name} = {}) => {
-		return regex.test(name);
-	};
-	const filterPetsByStatus = ({weight, age} = {}) => {
-		return weight > 15 || age > 10;
-	};
-
-	const filteredName = nameFilter.length > 1 ? pets.filter(filterPetsByName) : pets;
-	const filterStatus = statusFilter ? filteredName.filter(filterPetsByStatus) : filteredName;
+	const filteredName = nameFilter.length > 1 ? filterPetsByName(nameFilter, pets) : pets;
+	const filterStatus = statusFilter ? filterPetsByStatus(statusFilter, filteredName) : filteredName;
 	const petsDisplay = filterStatus.map(({id, internalID, name, imageURL, age, weight}, index) => {
-		const riskStyle = +weight > 15 || age > 10? 'riskHigh' : '';
+		const riskStyle = isRisk({age, weight})? 'riskHigh' : '';
         return (
             <div key={`pet-item-${index}`} className={`pet-item ${riskStyle}`} data-id={id}>
 				<div className='pet-item-content'>{internalID}</div>
