@@ -7,11 +7,11 @@ export const petsAction = () => {
 		});
 
 		return new Promise((resolve, reject) => {
-			axios.get(`http://localhost:7000/api/pets?limit=100`).then(({data}) => {
+			axios.get(`http://localhost:7000/api/pets?limit=100`).then(({data:{docs = []} = {}} ={}) => {
 				dispatch({
 					type: 'GET_PETS_ACTION',
 					payload: [
-						...data.docs
+						...docs
 					]
 				});
 			}).catch(error => {
