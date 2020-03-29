@@ -2,22 +2,32 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import logo from '../logo.svg';
 import '../styles/App.css';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 
 
 import {petsAction} from '../actions/petsAction';
 
 function App(props) {
 	const {pets, petsAction, loading} = props;
+	const [nameFilter, setNameFilter] = useState('');
+	const [statusFilter, setStatusFilter] = useState(false);
 
 	useEffect(() => {
 		!pets.length && petsAction();
 	});
 
-	const petsDisplay = pets.map(({id, internalID, name, imageURL, age, weight}, index) => {
+	const regex = new RegExp('^' + nameFilter, 'i');
+	const filterPetsByName = ({name} = {}) => {
+		return regex.test(name);
+	};
+	const filterPetsByStatus = ({weight, age} = {}) => {
+		return weight > 15 || age > 10;
+	};
 
+	const filteredName = nameFilter.length > 0 ? pets.filter(filterPetsByName) : pets;
+	const filterStatus = statusFilter ? filteredName.filter(filterPetsByStatus) : filteredName;
+	const petsDisplay = filterStatus.map(({id, internalID, name, imageURL, age, weight}, index) => {
 		const riskStyle = +weight > 15 || age > 10? 'riskHigh' : '';
-
         return (
             <div key={`pet-item-${index}`} className={`pet-item ${riskStyle}`} data-id={id}>
 				<div className='pet-item-content'>{internalID}</div>
@@ -37,6 +47,24 @@ function App(props) {
 			</header>
             <main>
 				<h2>Available Pets:</h2>
+				<div className="filters">
+					<input type='text' placeholder="Filter by name" onChange={({nativeEvent = {}} = {}) => {
+						const {target:{
+							value
+						}} = nativeEvent;
+
+						setNameFilter(value);
+					}}/>
+					<label for='riskCB'>Filter by risk</label>
+					<input id='riskCB' type='checkbox' placeholder="Filter by name" onChange={({nativeEvent = {}} = {}) => {
+						const {target:{
+							checked
+						}} = nativeEvent;
+
+						setStatusFilter(checked);
+					}}>
+					</input>
+				</div>
 				<div className="riskContainer">
 					<div className="riskIndicator riskHigh"></div>
 					Denotes pet is at risk due to age or weight
