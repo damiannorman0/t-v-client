@@ -8,8 +8,8 @@ import { NavLink } from 'react-router-dom';
 
 import {petDetailAction} from '../actions/petDetailAction';
 
-function PetDetail(props) {
-	const {petDetail, petDetailAction, loading} = props;
+const PetDetail = (props) => {
+	const {petDetail, petDetailAction, loading, history} = props;
 	const {id} = props.match.params;
 	const {internalID, name, id:petID, weight, age} = petDetail;
 
@@ -19,12 +19,11 @@ function PetDetail(props) {
 
 	const petDisplay = petDetail.id && (
 		<div key={`pet-detail-${petDetail.name}`} className='pet-detail'>
-			<NavLink
-				to={'/'}
-				key={`back`} className='back'>
-				&lt; Back
-			</NavLink>
-
+			<button className="back" onClick={({} = {}) => {
+				history.goBack();
+			}}>
+				Back to Pets
+			</button>
 
 			<h3>{name}</h3>
 			<p>ID: {internalID}</p>

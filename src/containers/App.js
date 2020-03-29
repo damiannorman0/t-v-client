@@ -8,12 +8,16 @@ import {petsAction} from '../actions/petsAction';
 import {filterPetsByName, filterPetsByStatus, isRisk} from '../utils/filter';
 import {Filters} from "../components/filters";
 import {PetItem} from "../components/petItem";
+import Tiles from "../components/tiles";
+import Table from "../components/table";
 
 
-function App(props) {
+
+const App = (props) => {
 	const {pets, petsAction, loading} = props;
 	const [nameFilter, setNameFilter] = useState('');
 	const [statusFilter, setStatusFilter] = useState(false);
+	const {table = false} = props.match.params;
 
 	useEffect(() => {
 		(!loading && !pets.length) && petsAction();
@@ -28,6 +32,12 @@ function App(props) {
     });
 
 	const loadingClass = loading? 'loader-show' : '';
+	const getDetail = (id = '') => {
+		const {history} = props;
+		history.push(`/petDetail/${id}`);
+	};
+
+	const petsComponent = table? (<Table isRisk={isRisk} getDetail={getDetail} petsDisplay={petsDisplay} />) : (<Tiles getDetail={getDetail} petsDisplay={petsDisplay}/>);
 
 	return (
 		<div className="App">
@@ -43,13 +53,7 @@ function App(props) {
 					<div className="riskIndicator riskHigh"></div>
 					Denotes pet is at risk due to age or weight
 				</div>
-                <div className="pets" onClick={({nativeEvent: {target: { dataset = {}} = {}} = {}} = {}) => {
-					const {id} = dataset;
-					const {history} = props;
-					history.push(`/petDetail/${id}`);
-				}}>
-                    {petsDisplay}
-                </div>
+				{petsComponent}
             </main>
 			<footer className="App-footer">
 				<div className="content">

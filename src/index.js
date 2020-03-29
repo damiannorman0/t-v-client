@@ -26,7 +26,7 @@ const history = createBrowserHistory();
 ReactDOM.render(
     <Provider store={configureStore()}>
         <Router history={history}>
-            <Route exact path="/" component={App} />
+            <Route exact path="/:table?" component={App} />
             <Route path="/petDetail/:id" component={PetDetail} />
         </Router>
     </Provider>,
