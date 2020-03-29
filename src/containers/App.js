@@ -23,7 +23,7 @@ function App(props) {
 	const filterStatus = statusFilter ? filterPetsByStatus(statusFilter, filteredName) : filteredName;
 	const petsDisplay = filterStatus.map((item, index) => {
         return (
-			<PetItem {...item} index={index}/>
+			<PetItem key={`pet-item-${index}`} {...item} index={index} isRisk={isRisk}/>
         );
     });
 

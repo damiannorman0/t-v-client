@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export const Filters = (props) => {
 	const {setNameFilter, setStatusFilter} = props;
@@ -27,3 +28,14 @@ export const Filters = (props) => {
 		</div>
 	);
 };
+
+Filters.propTypes = {
+	setNameFilter:PropTypes.func,
+	setStatusFilter: PropTypes.func
+};
+
+Filters.defaultProps = {
+	setNameFilter: (e = {}) => {},
+	setStatusFilter: (e = {}) => {}
+};
+
