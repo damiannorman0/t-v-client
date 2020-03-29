@@ -43,8 +43,8 @@ function App(props) {
 					<div className="riskIndicator riskHigh"></div>
 					Denotes pet is at risk due to age or weight
 				</div>
-                <div className="pets" onClick={(e) => {
-					const {id} = e.nativeEvent.target.dataset;
+                <div className="pets" onClick={({nativeEvent: {target: { dataset = {}} = {}} = {}} = {}) => {
+					const {id} = dataset;
 					const {history} = props;
 					history.push(`/petDetail/${id}`);
 				}}>
