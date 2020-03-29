@@ -14,7 +14,7 @@ function PetDetail(props) {
 	const {internalID, name, id:petID, weight, age} = petDetail;
 
 	useEffect(() => {
-		id !== petID && petDetailAction(id);
+		(id !== petID && !loading) && petDetailAction(id);
 	});
 
 	const petDisplay = petDetail.id && (

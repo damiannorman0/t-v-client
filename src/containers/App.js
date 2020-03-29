@@ -16,7 +16,7 @@ function App(props) {
 	const [statusFilter, setStatusFilter] = useState(false);
 
 	useEffect(() => {
-		!pets.length && petsAction();
+		(!loading && !pets.length) && petsAction();
 	});
 
 	const filteredName = nameFilter.length > 1 ? filterPetsByName(nameFilter, pets) : pets;
