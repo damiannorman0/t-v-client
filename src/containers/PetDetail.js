@@ -3,14 +3,17 @@ import {connect} from 'react-redux';
 import logo from '../logo.svg';
 import '../styles/App.css';
 import React, {useEffect} from 'react';
-import { NavLink } from 'react-router-dom';
 
 
 import {petDetailAction} from '../actions/petDetailAction';
 
 const PetDetail = (props) => {
 	const {petDetail, petDetailAction, loading, history} = props;
-	const {id} = props.match.params;
+	const {match: {
+		params: {
+			id = ''
+		} = {}
+	} = {}} = props;
 	const {internalID, name, id:petID, weight, age} = petDetail;
 
 	useEffect(() => {
@@ -19,7 +22,7 @@ const PetDetail = (props) => {
 
 	const petDisplay = petDetail.id && (
 		<div key={`pet-detail-${petDetail.name}`} className='pet-detail'>
-			<button className="back" onClick={({} = {}) => {
+			<button className="back" onClick={() => {
 				history.goBack();
 			}}>
 				Back to Pets
