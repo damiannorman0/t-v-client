@@ -15,7 +15,6 @@ import { Router, Route } from 'react-router-dom'
 
 const history = createBrowserHistory();
 
-
 // ReactDOM.render(
 //   <React.StrictMode>
 //     <App />
