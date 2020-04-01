@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Tiles = (props) => {
 	const {petsDisplay = [], getDetail} = props;
-	return (<div className="pets" onClick={({nativeEvent: {target: { dataset = {}} = {}} = {}} = {}) => {
+	return (<div className="pets" onClick={({ target: {dataset = {}} = {} }) => {
 		const {id} = dataset;
 		getDetail(id);
 	}}>
