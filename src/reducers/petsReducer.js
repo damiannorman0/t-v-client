@@ -23,13 +23,22 @@ export default (state = initialState, action = {}) => {
 				validEmpty
 			};
 		case 'GET_PET_DETAIL_ACTION':
+			const validEmptyDetail = !action.payload.id? true : false
 			return {
 				...state,
 				loading: false,
 				petDetail: {
 					...action.payload
-				}
+				},
+				validEmpty: validEmptyDetail
 			};
+		case 'NOT_FOUND':
+			return {
+				...state,
+				loading: false,
+				validEmpty: true
+			};
+
 		default:
 			return state
 	}

@@ -8,7 +8,7 @@ import React, {useEffect} from 'react';
 import {petDetailAction} from '../actions/petDetailAction';
 
 const PetDetail = (props) => {
-	const {petDetail, petDetailAction, loading, history} = props;
+	const {petDetail, petDetailAction, loading, history, validEmpty} = props;
 	const {match: {
 		params: {
 			id = ''
@@ -17,10 +17,16 @@ const PetDetail = (props) => {
 	const {internalID, name, id:petID, weight, age} = petDetail;
 
 	useEffect(() => {
-		(id !== petID && !loading) && petDetailAction(id);
+		if(validEmpty) {
+			return;
+		}
+
+		if(id !== petID && !loading) {
+			petDetailAction(id);
+		}
 	});
 
-	const petDisplay = petDetail.id && (
+	const petDisplay = petDetail && petDetail.id ? (
 		<div key={`pet-detail-${petDetail.name}`} className='pet-detail'>
 			<button className="back" onClick={() => {
 				history.goBack();
@@ -35,7 +41,7 @@ const PetDetail = (props) => {
 
 			<img src={logo} alt={`"${name}"`}/>
 		</div>
-	);
+	) : <div className="no-pets">Pet not found</div>;
 
 	const loadingClass = loading? 'loader-show' : '';
 
@@ -66,7 +72,8 @@ const PetDetail = (props) => {
 const mapStateToProps = (state, ownProps) => {
 	return {
 		petDetail: state.pets.petDetail,
-		loading: state.pets.loading
+		loading: state.pets.loading,
+		validEmpty: state.pets.validEmpty
 	};
 };
 

@@ -16,7 +16,9 @@ export const petDetailAction = (id) => {
 					}
 				});
 			}).catch(error => {
-				reject(error);
+				dispatch({
+					type: 'NOT_FOUND'
+				});
 			});
 		});
 	};
