@@ -43,6 +43,8 @@ const App = (props) => {
 	};
 
 	const petsComponent = table? (<Table isRisk={isRisk} getDetail={getDetail} petsDisplay={petsDisplay} />) : (<Tiles getDetail={getDetail} petsDisplay={petsDisplay}/>);
+	const petsFinal = !pets.length? (<div className="no-pets">No pets found</div>) : petsComponent;
+
 
 	return (
 		<div className="App">
@@ -58,7 +60,7 @@ const App = (props) => {
 					<div className="riskIndicator riskHigh"></div>
 					Denotes pet is at risk due to age or weight
 				</div>
-				{petsComponent}
+				{petsFinal}
             </main>
 			<footer className="App-footer">
 				<div className="content">

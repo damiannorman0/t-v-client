@@ -331,3 +331,7 @@ input {
   color: grey;
   text-decoration: none;
 }
+
+.no-pets {
+  color: white;
+}
