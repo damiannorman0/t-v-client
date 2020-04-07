@@ -14,19 +14,14 @@ import Table from "../components/table";
 
 
 const App = (props) => {
-	const {pets, petsAction, loading, validEmpty} = props;
+	const {pets, petsAction, loading} = props;
 	const [nameFilter, setNameFilter] = useState('');
 	const [statusFilter, setStatusFilter] = useState(false);
 	const {table = false} = props.match.params;
 
 	useEffect(() => {
-		if(validEmpty) {
-			return;
-		}
-		if(!loading && !pets.length) {
-			petsAction();
-		}
-	});
+		petsAction();
+	}, []);
 
 	const filteredName = nameFilter.length > 1 ? filterPetsByName(nameFilter, pets) : pets;
 	const filterStatus = statusFilter ? filterPetsByStatus(statusFilter, filteredName) : filteredName;
@@ -75,8 +70,7 @@ const App = (props) => {
 const mapStateToProps = (state, ownProps) => {
 	return {
 		pets: state.pets.pets,
-		loading: state.pets.loading,
-		validEmpty: state.pets.validEmpty
+		loading: state.pets.loading
 	};
 };
 

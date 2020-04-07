@@ -8,23 +8,17 @@ import React, {useEffect} from 'react';
 import {petDetailAction} from '../actions/petDetailAction';
 
 const PetDetail = (props) => {
-	const {petDetail, petDetailAction, loading, history, validEmpty} = props;
+	const {petDetail, petDetailAction, loading, history} = props;
 	const {match: {
 		params: {
 			id = ''
 		} = {}
 	} = {}} = props;
-	const {internalID, name, id:petID, weight, age} = petDetail;
+	const {internalID, name, weight, age} = petDetail;
 
 	useEffect(() => {
-		if(validEmpty) {
-			return;
-		}
-
-		if(id !== petID && !loading) {
-			petDetailAction(id);
-		}
-	});
+		petDetailAction(id);
+	}, []);
 
 	const petDisplay = petDetail && petDetail.id ? (
 		<div key={`pet-detail-${petDetail.name}`} className='pet-detail'>
