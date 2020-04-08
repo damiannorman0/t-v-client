@@ -18,7 +18,7 @@ const PetDetail = (props) => {
 
 	useEffect(() => {
 		petDetailAction(id);
-	}, []);
+	}, [id, petDetailAction]);
 
 	const petDisplay = petDetail && petDetail.id ? (
 		<div key={`pet-detail-${petDetail.name}`} className='pet-detail'>

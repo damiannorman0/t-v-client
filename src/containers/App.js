@@ -21,7 +21,7 @@ const App = (props) => {
 
 	useEffect(() => {
 		petsAction();
-	}, []);
+	}, [petsAction]);
 
 	const filteredName = nameFilter.length > 1 ? filterPetsByName(nameFilter, pets) : pets;
 	const filterStatus = statusFilter ? filterPetsByStatus(statusFilter, filteredName) : filteredName;
