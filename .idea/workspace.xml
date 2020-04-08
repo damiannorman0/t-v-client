@@ -126,7 +126,9 @@
       <workItem from="1586372710959" duration="17000" />
       <workItem from="1586372732973" duration="1032000" />
       <workItem from="1586374687986" duration="414000" />
-      <workItem from="1586375431998" duration="387000" />
+      <workItem from="1586375431998" duration="546000" />
+      <workItem from="1586376027288" duration="170000" />
+      <workItem from="1586387186500" duration="712000" />
     </task>
     <servers />
   </component>
@@ -145,5 +147,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/containers/PetDetail.js</url>
+          <line>22</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

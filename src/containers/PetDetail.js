@@ -3,17 +3,16 @@ import {connect} from 'react-redux';
 import logo from '../logo.svg';
 import '../styles/App.css';
 import React, {useEffect} from 'react';
+import {
+	useParams
+} from "react-router-dom";
 
 
 import {petDetailAction} from '../actions/petDetailAction';
 
 const PetDetail = (props) => {
 	const {petDetail, petDetailAction, loading, history} = props;
-	const {match: {
-		params: {
-			id = ''
-		} = {}
-	} = {}} = props;
+	const { id } = useParams();
 	const {internalID, name, weight, age} = petDetail;
 
 	useEffect(() => {
