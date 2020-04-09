@@ -1,7 +1,7 @@
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import logo from '../logo.svg';
-import '../styles/App.css';
+import '../styles/global.css';
 import React, {useEffect} from 'react';
 import {
 	useParams
@@ -47,7 +47,7 @@ const PetDetail = (props) => {
 			</header>
 			<main>
 				<h2>Pet Information:</h2>
-				<div className="pets">
+				<div className="pet-detail-container">
 					{petDisplay}
 				</div>
 			</main>
