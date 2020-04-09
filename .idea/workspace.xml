@@ -13,6 +13,7 @@
       <list>
         <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="tsconfig.json" />
       </list>
     </option>
   </component>
@@ -40,11 +41,11 @@
       <recent name="$PROJECT_DIR$/src/actions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/components/table" />
       <recent name="$PROJECT_DIR$/src/components/petItem" />
       <recent name="$PROJECT_DIR$/src/components/tiles" />
-      <recent name="$PROJECT_DIR$/src/containers/app" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -139,7 +140,8 @@
       <workItem from="1586387186500" duration="1506000" />
       <workItem from="1586461755557" duration="1770000" />
       <workItem from="1586463581689" duration="1789000" />
-      <workItem from="1586465425519" duration="1273000" />
+      <workItem from="1586465425519" duration="1769000" />
+      <workItem from="1586467242169" duration="292000" />
     </task>
     <servers />
   </component>

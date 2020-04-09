@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {petItem, petItemContent, riskHigh} from "./petItem.module.css";
+import {petItem, petItemContent, riskHigh} from "components/petItem/petItem.module.css";
 
 export const PetItem = (props) => {
 	const {internalID, name, id, age, weight, isRisk} = props;

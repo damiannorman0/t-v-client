@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import petsReducer from "./petsReducer";
+import petsReducer from "reducers/petsReducer";
 
 
 export default combineReducers({
