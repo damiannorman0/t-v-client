@@ -1,0 +1,22 @@
+.petItem {
+    background-color: lightcyan;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+
+.petItemContent {
+    pointer-events: none;
+    margin: 5px;
+}
+
+.riskHigh {
+    background-color: lightcoral;
+}
