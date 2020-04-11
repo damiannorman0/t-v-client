@@ -24,7 +24,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/petItem" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -141,7 +141,18 @@
       <workItem from="1586461755557" duration="1770000" />
       <workItem from="1586463581689" duration="1789000" />
       <workItem from="1586465425519" duration="1769000" />
-      <workItem from="1586467242169" duration="292000" />
+      <workItem from="1586467242169" duration="442000" />
+      <workItem from="1586467873370" duration="6000" />
+      <workItem from="1586467904446" duration="605000" />
+      <workItem from="1586468760426" duration="46000" />
+      <workItem from="1586468934030" duration="224000" />
+      <workItem from="1586469181373" duration="2000" />
+      <workItem from="1586471258661" duration="573000" />
+      <workItem from="1586481227212" duration="126000" />
+      <workItem from="1586482082946" duration="237000" />
+      <workItem from="1586497136810" duration="656000" />
+      <workItem from="1586541877949" duration="4000" />
+      <workItem from="1586645042844" duration="199000" />
     </task>
     <servers />
   </component>
