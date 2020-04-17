@@ -7,7 +7,7 @@ import React, {useEffect, useState} from 'react';
 import {petsAction} from 'actions/petsAction';
 import {filterPetsByName, filterPetsByStatus, isRisk} from 'utils/filter';
 import {Filters} from "components/filters";
-import {PetItem} from "components/petItem/petItem";
+import PetItem from "components/petItem/petItem";
 import Tiles from "components/tiles/tiles";
 import Table from "components/table";
 
