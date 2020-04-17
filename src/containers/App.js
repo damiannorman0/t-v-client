@@ -6,8 +6,8 @@ import React, {useEffect, useState} from 'react';
 
 import {petsAction} from 'actions/petsAction';
 import {filterPetsByName, filterPetsByStatus, isRisk} from 'utils/filter';
+import {getDisplay} from  'utils/petItems';
 import {Filters} from "components/filters";
-import PetItem from "components/petItem/petItem";
 import Tiles from "components/tiles/tiles";
 import Table from "components/table";
 
@@ -25,11 +25,7 @@ const App = (props) => {
 
 	const filteredName = nameFilter.length > 1 ? filterPetsByName(nameFilter, pets) : pets;
 	const filterStatus = statusFilter ? filterPetsByStatus(statusFilter, filteredName) : filteredName;
-	const petsDisplay = filterStatus.map((item, index) => {
-        return (
-			<PetItem key={`pet-item-${index}`} {...item} index={index} isRisk={isRisk}/>
-        );
-    });
+	const petsDisplay = getDisplay(filterStatus);
 
 	const loadingClass = loading? 'loader-show' : '';
 	const getDetail = (id = '') => {
