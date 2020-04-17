@@ -1,18 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
+import {Router, Route} from 'react-router-dom'
+
+
 import configureStore from 'store';
 import App from 'containers/App';
 import PetDetail from 'containers/PetDetail';
 import * as serviceWorker from 'serviceWorker';
 import {createBrowserHistory} from "history";
-import {Router, Route} from 'react-router-dom'
 
 const history = createBrowserHistory();
+const store = configureStore() || {};
+
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Provider store={configureStore()}>
+		<Provider store={store}>
 			<Router history={history}>
 				<Route exact path="/:table?" component={App}/>
 				<Route path="/petDetail/:id" component={PetDetail}/>
